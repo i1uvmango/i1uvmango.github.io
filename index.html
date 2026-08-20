@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK · i1uvmango — Project Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0F3;          /* graph-paper cool gray */
+  --grid:#DDE3E9;
+  --ink:#1B2430;         /* deep slate ink */
+  --sub:#5A6A7A;
+  --steel:#2E5E8C;       /* steel blue — primary */
+  --amber:#D98E04;       /* golden label — accent */
+  --card:#FFFFFF;
+  --line:#C9D2DB;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"IBM Plex Sans KR",sans-serif;
+  color:var(--ink);
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    var(--bg);
+  background-size:32px 32px;
+  line-height:1.6;
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ---------- hero ---------- */
+header{padding:72px 0 48px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--steel);text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(34px,6vw,54px);font-weight:700;letter-spacing:-0.02em;line-height:1.15}
+h1 .amber{color:var(--amber)}
+.tagline{margin-top:14px;font-size:16px;color:var(--sub);max-width:560px}
+.hero-links{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.hero-links a{
+  font-family:"IBM Plex Mono",monospace;font-size:13px;text-decoration:none;
+  color:var(--ink);border:1.5px solid var(--ink);padding:8px 16px;background:var(--card);
+  transition:background .15s,color .15s;
+}
+.hero-links a:hover,.hero-links a:focus-visible{background:var(--ink);color:#fff}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:center}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+
+/* MPPI trajectory signature */
+.traj-box{position:relative}
+.traj-label{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--sub);margin-top:6px;text-align:right}
+.traj-label b{color:var(--amber);font-weight:600}
+svg .cand{fill:none;stroke:#A9B6C2;stroke-width:1.2;opacity:.5}
+svg .golden{fill:none;stroke:var(--amber);stroke-width:2.6;stroke-linecap:round;
+  stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.4s ease .4s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){svg .golden{animation:none;stroke-dashoffset:0}}
+
+/* ---------- sections ---------- */
+section{padding:44px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.sec-head h2{font-size:22px;font-weight:700;letter-spacing:-0.01em}
+.sec-head .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--sub)}
+.sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-top:3px solid var(--steel);
+  padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;
+  transition:transform .15s, box-shadow .15s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(27,36,48,.10)}
+.card.flagship{border-top-color:var(--amber);grid-column:1/-1}
+.card h3{font-size:16px;font-weight:600}
+.card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.card h3 a:hover,.card h3 a:focus-visible{border-bottom-color:var(--amber)}
+.card p{font-size:14px;color:var(--sub)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:3px 8px;border:1px solid var(--line);color:var(--sub);background:var(--bg)}
+.tag.lang{color:var(--steel);border-color:var(--steel)}
+.tag.hot{color:var(--amber);border-color:var(--amber)}
+
+/* etc list */
+.etc{list-style:none;columns:2;column-gap:32px}
+@media(max-width:640px){.etc{columns:1}}
+.etc li{margin-bottom:8px;font-size:14px;break-inside:avoid}
+.etc a{color:var(--steel);text-decoration:none}
+.etc a:hover{text-decoration:underline}
+.etc span{color:var(--sub);font-size:13px}
+
+footer{margin-top:56px;padding:28px 0 40px;border-top:2px solid var(--ink);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--sub);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a{color:var(--steel);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">i1uvmango / project index</div>
+      <h1>MK<br>Simulation ×<br>Deep Learning<span class="amber">.</span></h1>
+      <p class="tagline">시뮬레이션이 만든 데이터로 모델을 학습시키고, 학습된 모델을 다시 현실에 되돌려 놓는 일 — 자율주행 제어부터 LLM 응용, 비전, 데이터 분석까지.</p>
+      <div class="hero-links">
+        <a href="https://github.com/i1uvmango">GitHub ↗</a>
+        <a href="#robotics">Projects ↓</a>
+      </div>
+    </div>
+    <div class="traj-box" aria-hidden="true">
+      <svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+        <path class="cand" d="M20,200 C80,180 120,190 180,150 C240,110 280,120 320,60"/>
+        <path class="cand" d="M20,200 C90,160 130,170 190,130 C250,95 290,100 325,40"/>
+        <path class="cand" d="M20,200 C70,190 140,200 200,170 C260,140 300,150 330,100"/>
+        <path class="cand" d="M20,200 C100,150 150,155 210,110 C260,75 300,70 322,25"/>
+        <path class="cand" d="M20,200 C60,195 110,210 170,185 C240,155 295,170 335,130"/>
+        <path class="cand" d="M20,200 C95,165 145,150 200,125 C255,100 285,85 318,45"/>
+        <path class="golden" d="M20,200 C85,170 135,175 195,140 C250,108 288,105 324,50"/>
+        <circle cx="20" cy="200" r="4" fill="var(--ink)"/>
+        <circle cx="324" cy="50" r="4" fill="var(--amber)"/>
+      </svg>
+      <div class="traj-label">2048 rollouts → <b>1 golden label</b> (MPPI)</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="robotics">
+    <div class="sec-head"><h2>Robotics / Simulation</h2><span class="count mono">01</span></div>
+    <div class="cards">
+      <div class="card flagship">
+        <h3><a href="https://github.com/i1uvmango/Genesis_AI_Sim2real_Real2sim">Genesis_AI_Sim2real_Real2sim</a></h3>
+        <p>Physics-Grounded Driving Policy via MPPI Label Mining — Genesis 물리엔진 위에서 MPPI가 2048개 롤아웃으로 채굴한 골든 제어 라벨로 Path→(Steer, Throttle, Brake) Mapper를 학습하고, Real2Sim–Sim2Real 정책 전이로 확장하는 연구 프로젝트.</p>
+        <div class="meta">
+          <span class="tag hot">Flagship</span>
+          <span class="tag lang">Python</span>
+          <span class="tag">Genesis</span><span class="tag">MPPI</span><span class="tag">Real2Sim</span><span class="tag">Imitation Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mldl">
+    <div class="sec-head"><h2>ML / DL</h2><span class="count mono">02</span></div>
+    <div class="cards">
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/vit">vit</a></h3>
+        <p>ViT on CIFAR-10 — patch size·capacity·Hybrid CNN+ViT 구조 변형이 성능에 미치는 영향을 직접 실험·플롯으로 근거화한 분석 리포트.</p>
+        <div class="meta"><span class="tag lang">Python</span><span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Ablation</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/chic_ml_project">chic_ml_project</a></h3>
+        <p>CHIC 기계학습 스터디 기반 ML 프로젝트 — 겨울방학 스터디에서 진행한 모델링 실습.</p>
+        <div class="meta"><span class="tag lang">Python</span><span class="tag">ML Study</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="llm">
+    <div class="sec-head"><h2>LLM</h2><span class="count mono">03</span></div>
+    <div class="cards">
+      <div class="card flagship">
+        <h3><a href="https://github.com/i1uvmango/patent_scope">patent_scope</a></h3>
+        <p>특허 심사 보조 AI를 end-to-end 직접 설계 — 특허 문서 텍스트마이닝으로 학습 데이터를 구축하고, <b>S-BERT와 Qwen을 각각 파인튜닝</b>해 선행기술 검색 → 등록/거절 판단 → 거절 사유 분류 → 설명 생성까지 전 파이프라인을 밑바닥부터 구현.</p>
+        <div class="meta">
+          <span class="tag hot">Flagship</span>
+          <span class="tag lang">Python</span><span class="tag">Qwen Fine-tuned</span><span class="tag">S-BERT Fine-tuned</span><span class="tag">E2E Pipeline Design</span><span class="tag">Text Mining</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/Bridge_X">Bridge_X</a></h3>
+        <p>분쟁지역 청소년 심리상담 지원 플랫폼 — Google Gemini 기반 AI 챗봇 + Webex 연동 (NestJS 백엔드). <b>Cisco 주관 프로젝트 3위 수상.</b></p>
+        <div class="meta"><span class="tag hot">🏆 Cisco 3rd Place</span><span class="tag lang">TypeScript</span><span class="tag">Gemini</span><span class="tag">NestJS</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/HUSS-info-guard">HUSS-info-guard</a></h3>
+        <p>Info-Guard — YouTube 영상 신뢰도를 감정 분석·편향 감지·콘텐츠 분류로 평가하는 AI 검증 플랫폼 (FastAPI, WebSocket 실시간 분석).</p>
+        <div class="meta"><span class="tag lang">Python</span><span class="tag">NLP</span><span class="tag">FastAPI</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ds">
+    <div class="sec-head"><h2>Data Science</h2><span class="count mono">04</span></div>
+    <div class="cards">
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/kr_extinction_regression">kr_extinction_regression</a></h3>
+        <p>대한민국 소멸지역 회귀 분석 — 빅데이터프로그래밍 과목에서 지역 소멸 위험 요인을 회귀 모델로 분석.</p>
+        <div class="meta"><span class="tag">Regression</span><span class="tag">Big Data</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv">
+    <div class="sec-head"><h2>Computer Vision / Graphics</h2><span class="count mono">05</span></div>
+    <div class="cards">
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/image_blending">image_blending</a></h3>
+        <p>OpenCV 없이 NumPy·PIL만으로 구현한 ROI 기반 Laplacian Pyramid 블렌딩 — edge mask로 윤곽만 자연스럽게 합성.</p>
+        <div class="meta"><span class="tag lang">Python</span><span class="tag">Laplacian Pyramid</span><span class="tag">NumPy</span></div>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/i1uvmango/escape_the_cave_computerGraphics">escape_the_cave</a></h3>
+        <p>Escape the Cave — 빛이 자원이자 위험이 되는 1인칭 절차적 복셀 동굴 탈출 게임. 브라우저에서 바로 플레이 가능 (컴퓨터그래픽스 기말 과제).</p>
+        <div class="meta"><span class="tag lang">JavaScript</span><span class="tag">Three.js</span><span class="tag">Voxel</span><span class="tag">Playable ↗</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="etc">
+    <div class="sec-head"><h2>Studies &amp; Etc</h2><span class="count mono">—</span></div>
+    <ul class="etc">
+      <li><a href="https://github.com/i1uvmango/BIUM">BIUM</a> <span>— CHIC ESG 해커톤 (fork)</span></li>
+      <li><a href="https://github.com/i1uvmango/computer_graphics_threejs">computer_graphics_threejs</a> <span>— Three.js 실습</span></li>
+      <li><a href="https://github.com/i1uvmango/fastapi">fastapi</a> · <a href="https://github.com/i1uvmango/streamlit_first">streamlit_first</a> <span>— 웹 프레임워크 실습</span></li>
+      <li><a href="https://github.com/i1uvmango/oss_docker">oss_docker</a> · <a href="https://github.com/i1uvmango/docker_practice">docker_practice</a> <span>— Docker</span></li>
+      <li><a href="https://github.com/i1uvmango/vidtotxt">vidtotxt</a> <span>— 영상→텍스트 유틸</span></li>
+      <li><a href="https://github.com/i1uvmango/study_log">study_log</a> · <a href="https://github.com/i1uvmango/jekyll_blog">jekyll_blog</a> <span>— 학습 기록</span></li>
+      <li><a href="https://github.com/i1uvmango/CHIC_26_Machine_Learning_study">CHIC ML study</a> · <a href="https://github.com/i1uvmango/CHIC_25_NodeJS_study">CHIC NodeJS study</a> <span>— 스터디 (fork)</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;width:100%">
+    <span>© 2026 MK — Kwangwoon Univ. · diglab</span>
+    <span><a href="https://github.com/i1uvmango">github.com/i1uvmango</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

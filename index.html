@@ -3,232 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK · i1uvmango — Project Index</title>
+<title>MK · i1uvmango — Projects</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EDF0F3;          /* graph-paper cool gray */
-  --grid:#DDE3E9;
-  --ink:#1B2430;         /* deep slate ink */
-  --sub:#5A6A7A;
-  --steel:#2E5E8C;       /* steel blue — primary */
-  --amber:#D98E04;       /* golden label — accent */
-  --card:#FFFFFF;
-  --line:#C9D2DB;
+  --ink:#111418;
+  --sub:#6B7480;
+  --line:#E5E8EC;
+  --link:#1A1A1A;
+  --accent:#2E5E8C;
+  --amber:#D98E04;
+  --bg:#FFFFFF;
+  --thumb-bg:#F3F5F8;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:"IBM Plex Sans KR",sans-serif;
-  color:var(--ink);
-  background:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-    var(--bg);
-  background-size:32px 32px;
-  line-height:1.6;
-}
+body{font-family:"IBM Plex Sans KR",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+a{color:inherit}
 .mono{font-family:"IBM Plex Mono",monospace}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
-/* ---------- hero ---------- */
-header{padding:72px 0 48px;border-bottom:2px solid var(--ink)}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--steel);text-transform:uppercase;margin-bottom:14px}
-h1{font-size:clamp(34px,6vw,54px);font-weight:700;letter-spacing:-0.02em;line-height:1.15}
-h1 .amber{color:var(--amber)}
-.tagline{margin-top:14px;font-size:16px;color:var(--sub);max-width:560px}
-.hero-links{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-.hero-links a{
-  font-family:"IBM Plex Mono",monospace;font-size:13px;text-decoration:none;
-  color:var(--ink);border:1.5px solid var(--ink);padding:8px 16px;background:var(--card);
-  transition:background .15s,color .15s;
-}
-.hero-links a:hover,.hero-links a:focus-visible{background:var(--ink);color:#fff}
-.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:center}
-@media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+/* ---------- top nav ---------- */
+nav{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);z-index:10}
+.nav-inner{max-width:1200px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{font-size:19px;font-weight:700;text-decoration:none;letter-spacing:-0.01em}
+.nav-links{display:flex;gap:26px;flex-wrap:wrap}
+.nav-links a{font-size:15px;color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--accent)}
 
-/* MPPI trajectory signature */
-.traj-box{position:relative}
-.traj-label{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--sub);margin-top:6px;text-align:right}
-.traj-label b{color:var(--amber);font-weight:600}
-svg .cand{fill:none;stroke:#A9B6C2;stroke-width:1.2;opacity:.5}
-svg .golden{fill:none;stroke:var(--amber);stroke-width:2.6;stroke-linecap:round;
-  stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.4s ease .4s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-@media(prefers-reduced-motion:reduce){svg .golden{animation:none;stroke-dashoffset:0}}
+/* ---------- layout ---------- */
+.page{max-width:1200px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:280px 1fr;gap:56px}
+@media(max-width:900px){.page{grid-template-columns:1fr;gap:32px}}
 
-/* ---------- sections ---------- */
-section{padding:44px 0 8px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
-.sec-head h2{font-size:22px;font-weight:700;letter-spacing:-0.01em}
-.sec-head .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--sub)}
-.sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+/* sidebar */
+aside{align-self:start;position:sticky;top:92px}
+@media(max-width:900px){aside{position:static}}
+.avatar-field{margin-bottom:20px}
+.avatar-field svg{width:100%;max-width:240px;display:block}
+aside h2{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-0.01em}
+aside p{font-size:14.5px;color:var(--sub)}
+aside p b{color:var(--ink);font-weight:600}
+.side-links{margin-top:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.side-links a{color:var(--accent);text-decoration:none}
+.side-links a:hover{text-decoration:underline}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{
-  background:var(--card);border:1px solid var(--line);border-top:3px solid var(--steel);
-  padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;
-  transition:transform .15s, box-shadow .15s;
-}
-.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(27,36,48,.10)}
-.card.flagship{border-top-color:var(--amber);grid-column:1/-1}
-.card h3{font-size:16px;font-weight:600}
-.card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
-.card h3 a:hover,.card h3 a:focus-visible{border-bottom-color:var(--amber)}
-.card p{font-size:14px;color:var(--sub)}
-.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:3px 8px;border:1px solid var(--line);color:var(--sub);background:var(--bg)}
-.tag.lang{color:var(--steel);border-color:var(--steel)}
-.tag.hot{color:var(--amber);border-color:var(--amber)}
+/* ---------- main ---------- */
+main h1{font-size:34px;font-weight:700;letter-spacing:-0.02em;margin-bottom:34px}
+section{margin-bottom:52px}
+.cat{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 
-/* etc list */
-.etc{list-style:none;columns:2;column-gap:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px}
+.proj{display:flex;flex-direction:column;gap:10px}
+.thumb{aspect-ratio:16/9;background:var(--thumb-bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.thumb svg{width:100%;height:100%;display:block;object-fit:cover}
+.thumb img{width:100%;height:100%;display:block;object-fit:contain;background:var(--thumb-bg)}
+.thumb video{width:100%;height:100%;display:block;object-fit:cover;background:#0B0F14}
+.proj h3{font-size:17.5px;font-weight:600;line-height:1.4}
+.proj h3 a{color:var(--link);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.proj h3 a:hover{color:var(--accent)}
+.read{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--sub)}
+.read svg{width:13px;height:13px}
+.proj p{font-size:14px;color:var(--sub);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);
+  border:1px solid var(--amber);border-radius:3px;padding:1px 7px;margin-right:6px}
+
+/* etc */
+.etc{list-style:none;columns:2;column-gap:40px;font-size:14.5px}
 @media(max-width:640px){.etc{columns:1}}
-.etc li{margin-bottom:8px;font-size:14px;break-inside:avoid}
-.etc a{color:var(--steel);text-decoration:none}
-.etc a:hover{text-decoration:underline}
-.etc span{color:var(--sub);font-size:13px}
+.etc li{margin-bottom:9px;break-inside:avoid}
+.etc a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.etc a:hover{color:var(--accent)}
+.etc span{color:var(--sub);font-size:13.5px}
 
-footer{margin-top:56px;padding:28px 0 40px;border-top:2px solid var(--ink);
-  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--sub);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-footer a{color:var(--steel);text-decoration:none}
+footer{border-top:1px solid var(--line);margin-top:24px}
+.foot-inner{max-width:1200px;margin:0 auto;padding:26px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  font-size:13px;color:var(--sub)}
+.foot-inner a{color:var(--accent);text-decoration:none}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">i1uvmango / project index</div>
-      <h1>MK<br>Simulation ×<br>Deep Learning<span class="amber">.</span></h1>
-      <p class="tagline">시뮬레이션이 만든 데이터로 모델을 학습시키고, 학습된 모델을 다시 현실에 되돌려 놓는 일 — 자율주행 제어부터 LLM 응용, 비전, 데이터 분석까지.</p>
-      <div class="hero-links">
-        <a href="https://github.com/i1uvmango">GitHub ↗</a>
-        <a href="#robotics">Projects ↓</a>
-      </div>
-    </div>
-    <div class="traj-box" aria-hidden="true">
-      <svg viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
-        <path class="cand" d="M20,200 C80,180 120,190 180,150 C240,110 280,120 320,60"/>
-        <path class="cand" d="M20,200 C90,160 130,170 190,130 C250,95 290,100 325,40"/>
-        <path class="cand" d="M20,200 C70,190 140,200 200,170 C260,140 300,150 330,100"/>
-        <path class="cand" d="M20,200 C100,150 150,155 210,110 C260,75 300,70 322,25"/>
-        <path class="cand" d="M20,200 C60,195 110,210 170,185 C240,155 295,170 335,130"/>
-        <path class="cand" d="M20,200 C95,165 145,150 200,125 C255,100 285,85 318,45"/>
-        <path class="golden" d="M20,200 C85,170 135,175 195,140 C250,108 288,105 324,50"/>
-        <circle cx="20" cy="200" r="4" fill="var(--ink)"/>
-        <circle cx="324" cy="50" r="4" fill="var(--amber)"/>
-      </svg>
-      <div class="traj-label">2048 rollouts → <b>1 golden label</b> (MPPI)</div>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">MK — 정만교</a>
+    <div class="nav-links">
+      <a href="#robotics">Robotics/Sim</a>
+      <a href="#mldl">ML/DL</a>
+      <a href="#llm">LLM</a>
+      <a href="#ds">Data Science</a>
+      <a href="#cv">Vision/Graphics</a>
+      <a href="https://github.com/i1uvmango">GitHub ↗</a>
     </div>
   </div>
-</header>
+</nav>
 
-<main class="wrap">
+<div class="page" id="top">
 
-  <section id="robotics">
-    <div class="sec-head"><h2>Robotics / Simulation</h2><span class="count mono">01</span></div>
-    <div class="cards">
-      <div class="card flagship">
-        <h3><a href="https://github.com/i1uvmango/Genesis_AI_Sim2real_Real2sim">Genesis_AI_Sim2real_Real2sim</a></h3>
-        <p>Physics-Grounded Driving Policy via MPPI Label Mining — Genesis 물리엔진 위에서 MPPI가 2048개 롤아웃으로 채굴한 골든 제어 라벨로 Path→(Steer, Throttle, Brake) Mapper를 학습하고, Real2Sim–Sim2Real 정책 전이로 확장하는 연구 프로젝트.</p>
-        <div class="meta">
-          <span class="tag hot">Flagship</span>
-          <span class="tag lang">Python</span>
-          <span class="tag">Genesis</span><span class="tag">MPPI</span><span class="tag">Real2Sim</span><span class="tag">Imitation Learning</span>
-        </div>
-      </div>
+  <!-- ============ sidebar ============ -->
+  <aside>
+    <div class="avatar-field" aria-hidden="true">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="120" cy="120" r="112" fill="none" stroke="#E5E8EC" stroke-width="2"/>
+        <circle cx="120" cy="120" r="78" fill="#F3F5F8"/>
+        <path d="M40,190 C80,160 100,175 130,140 C160,105 185,110 210,70" fill="none" stroke="#C9D2DB" stroke-width="2"/>
+        <path d="M40,190 C85,150 115,160 145,125 C175,92 190,85 206,55" fill="none" stroke="#C9D2DB" stroke-width="2"/>
+        <path d="M40,190 C82,155 108,168 138,132 C168,98 188,98 208,62" fill="none" stroke="#D98E04" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="40" cy="190" r="5" fill="#111418"/>
+        <circle cx="208" cy="62" r="5" fill="#D98E04"/>
+        <text x="120" y="228" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#6B7480">rollouts → golden label</text>
+      </svg>
     </div>
-  </section>
-
-  <section id="mldl">
-    <div class="sec-head"><h2>ML / DL</h2><span class="count mono">02</span></div>
-    <div class="cards">
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/vit">vit</a></h3>
-        <p>ViT on CIFAR-10 — patch size·capacity·Hybrid CNN+ViT 구조 변형이 성능에 미치는 영향을 직접 실험·플롯으로 근거화한 분석 리포트.</p>
-        <div class="meta"><span class="tag lang">Python</span><span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Ablation</span></div>
-      </div>
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/chic_ml_project">chic_ml_project</a></h3>
-        <p>CHIC 기계학습 스터디 기반 ML 프로젝트 — 겨울방학 스터디에서 진행한 모델링 실습.</p>
-        <div class="meta"><span class="tag lang">Python</span><span class="tag">ML Study</span></div>
-      </div>
+    <h2>Our Research Field</h2>
+    <p><b>Simulation × Deep Learning.</b><br>
+    시뮬레이션이 만든 데이터로 모델을 학습시키고, 학습된 모델을 현실로 되돌려 놓는 일 —
+    자율주행 제어(Real2Sim·MPPI)부터 LLM 응용, 컴퓨터 비전, 데이터 분석까지.</p>
+    <p style="margin-top:12px">AI Research Student @ Kwangwoon Univ.<br>Deep Imaging &amp; Graphics Lab</p>
+    <div class="side-links">
+      <a href="https://github.com/i1uvmango">GitHub — i1uvmango</a>
+      <a href="https://korfriend.github.io/Projects/real2sim-sim2real/">Lab — Real2Sim·Sim2Real Project</a>
+      <a href="mailto:xcruisermk@gmail.com">xcruisermk@gmail.com</a>
     </div>
-  </section>
+  </aside>
 
-  <section id="llm">
-    <div class="sec-head"><h2>LLM</h2><span class="count mono">03</span></div>
-    <div class="cards">
-      <div class="card flagship">
-        <h3><a href="https://github.com/i1uvmango/patent_scope">patent_scope</a></h3>
-        <p>특허 심사 보조 AI를 end-to-end 직접 설계 — 특허 문서 텍스트마이닝으로 학습 데이터를 구축하고, <b>S-BERT와 Qwen을 각각 파인튜닝</b>해 선행기술 검색 → 등록/거절 판단 → 거절 사유 분류 → 설명 생성까지 전 파이프라인을 밑바닥부터 구현.</p>
-        <div class="meta">
-          <span class="tag hot">Flagship</span>
-          <span class="tag lang">Python</span><span class="tag">Qwen Fine-tuned</span><span class="tag">S-BERT Fine-tuned</span><span class="tag">E2E Pipeline Design</span><span class="tag">Text Mining</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/Bridge_X">Bridge_X</a></h3>
-        <p>분쟁지역 청소년 심리상담 지원 플랫폼 — Google Gemini 기반 AI 챗봇 + Webex 연동 (NestJS 백엔드). <b>Cisco 주관 프로젝트 3위 수상.</b></p>
-        <div class="meta"><span class="tag hot">🏆 Cisco 3rd Place</span><span class="tag lang">TypeScript</span><span class="tag">Gemini</span><span class="tag">NestJS</span></div>
-      </div>
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/HUSS-info-guard">HUSS-info-guard</a></h3>
-        <p>Info-Guard — YouTube 영상 신뢰도를 감정 분석·편향 감지·콘텐츠 분류로 평가하는 AI 검증 플랫폼 (FastAPI, WebSocket 실시간 분석).</p>
-        <div class="meta"><span class="tag lang">Python</span><span class="tag">NLP</span><span class="tag">FastAPI</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- ============ main ============ -->
+  <main>
+    <h1>Projects</h1>
 
-  <section id="ds">
-    <div class="sec-head"><h2>Data Science</h2><span class="count mono">04</span></div>
-    <div class="cards">
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/kr_extinction_regression">kr_extinction_regression</a></h3>
-        <p>대한민국 소멸지역 회귀 분석 — 빅데이터프로그래밍 과목에서 지역 소멸 위험 요인을 회귀 모델로 분석.</p>
-        <div class="meta"><span class="tag">Regression</span><span class="tag">Big Data</span></div>
+    <section id="robotics">
+      <div class="cat">Robotics / Simulation</div>
+      <div class="grid">
+        <article class="proj">
+          <div class="thumb">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/genesis.jpg"
+                   aria-label="MPPI 경로 추종 롤아웃 — Genesis viewer">
+              <source src="assets/genesis.webm" type="video/webm">
+              <source src="assets/genesis.mp4" type="video/mp4">
+              <img src="assets/genesis.jpg" alt="MPPI path tracking on Real2Sim terrain">
+            </video>
+          </div>
+          <h3><a href="https://github.com/i1uvmango/Genesis_AI_Sim2real_Real2sim">Genesis Real2Sim — Physics-Grounded Driving Policy</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Flagship · Python · Genesis</div>
+          <p>Genesis 물리엔진 위에서 MPPI가 2048개 롤아웃으로 채굴한 골든 제어 라벨로 Path→(Steer, Throttle, Brake) Mapper를 학습. Real2Sim–Sim2Real 정책 전이로 확장하는 연구 프로젝트.</p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="cv">
-    <div class="sec-head"><h2>Computer Vision / Graphics</h2><span class="count mono">05</span></div>
-    <div class="cards">
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/image_blending">image_blending</a></h3>
-        <p>OpenCV 없이 NumPy·PIL만으로 구현한 ROI 기반 Laplacian Pyramid 블렌딩 — edge mask로 윤곽만 자연스럽게 합성.</p>
-        <div class="meta"><span class="tag lang">Python</span><span class="tag">Laplacian Pyramid</span><span class="tag">NumPy</span></div>
+    <section id="mldl">
+      <div class="cat">ML / DL</div>
+      <div class="grid">
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/vit.jpg" alt="ViT vs Hybrid attention rollout on CIFAR-10"></div>
+          <h3><a href="https://github.com/i1uvmango/vit">ViT Structural Analysis on CIFAR-10</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>PyTorch · Ablation Report</div>
+          <p>Patch size·capacity·Hybrid CNN+ViT 구조 변형이 성능에 미치는 영향을 직접 실험·플롯으로 근거화한 분석 리포트.</p>
+        </article>
+        
       </div>
-      <div class="card">
-        <h3><a href="https://github.com/i1uvmango/escape_the_cave_computerGraphics">escape_the_cave</a></h3>
-        <p>Escape the Cave — 빛이 자원이자 위험이 되는 1인칭 절차적 복셀 동굴 탈출 게임. 브라우저에서 바로 플레이 가능 (컴퓨터그래픽스 기말 과제).</p>
-        <div class="meta"><span class="tag lang">JavaScript</span><span class="tag">Three.js</span><span class="tag">Voxel</span><span class="tag">Playable ↗</span></div>
+    </section>
+
+    <section id="llm">
+      <div class="cat">LLM</div>
+      <div class="grid">
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/patent_scope.jpg" alt="Patent Scope pipeline: SBERT retrieval to Qwen generation"></div>
+          <h3><a href="https://github.com/i1uvmango/patent_scope">Patent Scope — 특허 심사 보조 AI</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Qwen Fine-tuned · S-BERT Fine-tuned · Text Mining</div>
+          <p>특허 문서 텍스트마이닝으로 학습 데이터를 구축하고, S-BERT와 Qwen을 각각 파인튜닝해 선행기술 검색 → 등록/거절 판단 → 거절 사유 분류 → 설명 생성까지 전 파이프라인을 end-to-end로 직접 설계·구현.</p>
+        </article>
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/bridge_x.jpg" alt="Bridge X urgent Webex meeting flow"></div>
+          <h3><a href="https://github.com/i1uvmango/Bridge_X">Bridge X — 분쟁지역 청소년 심리상담 플랫폼</a></h3>
+          <div class="read"><span class="badge">🏆 Cisco 3rd</span><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>TypeScript · Gemini</div>
+          <p>Google Gemini 기반 AI 챗봇과 Webex 연동으로 분쟁지역 청소년을 상담사와 연결하는 플랫폼 (NestJS). Cisco 주관 프로젝트 3위 수상.</p>
+        </article>
+        <article class="proj">
+          <div class="thumb"><svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="200" fill="#EFF3F7"/>
+            <rect x="60" y="46" width="150" height="96" rx="8" fill="#111418"/>
+            <polygon points="118,76 118,112 152,94" fill="#fff"/>
+            <rect x="60" y="152" width="150" height="10" rx="5" fill="#B9C4CF"/>
+            <rect x="60" y="152" width="96" height="10" rx="5" fill="#D98E04"/>
+            <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#2E5E8C">
+              <text x="232" y="70">trust</text><text x="232" y="92">bias</text><text x="232" y="114">emotion</text>
+            </g>
+            <g stroke="#2E5E8C" stroke-width="2"><path d="M222,66l-6,0M222,88l-6,0M222,110l-6,0"/></g>
+          </svg></div>
+          <h3><a href="https://github.com/i1uvmango/HUSS-info-guard">Info-Guard — 영상 신뢰도 분석</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>NLP · FastAPI · WebSocket</div>
+          <p>YouTube 영상 신뢰도를 감정 분석·편향 감지·콘텐츠 분류로 평가하는 AI 검증 플랫폼. 실시간 분석 파이프라인 구현.</p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="etc">
-    <div class="sec-head"><h2>Studies &amp; Etc</h2><span class="count mono">—</span></div>
-    <ul class="etc">
-      <li><a href="https://github.com/i1uvmango/BIUM">BIUM</a> <span>— CHIC ESG 해커톤 (fork)</span></li>
-      <li><a href="https://github.com/i1uvmango/computer_graphics_threejs">computer_graphics_threejs</a> <span>— Three.js 실습</span></li>
-      <li><a href="https://github.com/i1uvmango/fastapi">fastapi</a> · <a href="https://github.com/i1uvmango/streamlit_first">streamlit_first</a> <span>— 웹 프레임워크 실습</span></li>
-      <li><a href="https://github.com/i1uvmango/oss_docker">oss_docker</a> · <a href="https://github.com/i1uvmango/docker_practice">docker_practice</a> <span>— Docker</span></li>
-      <li><a href="https://github.com/i1uvmango/vidtotxt">vidtotxt</a> <span>— 영상→텍스트 유틸</span></li>
-      <li><a href="https://github.com/i1uvmango/study_log">study_log</a> · <a href="https://github.com/i1uvmango/jekyll_blog">jekyll_blog</a> <span>— 학습 기록</span></li>
-      <li><a href="https://github.com/i1uvmango/CHIC_26_Machine_Learning_study">CHIC ML study</a> · <a href="https://github.com/i1uvmango/CHIC_25_NodeJS_study">CHIC NodeJS study</a> <span>— 스터디 (fork)</span></li>
-    </ul>
-  </section>
+    <section id="ds">
+      <div class="cat">Data Science</div>
+      <div class="grid">
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/kr_extinction.jpg" alt="소멸위험지수 지역 분류 지도"></div>
+          <h3><a href="https://github.com/i1uvmango/kr_extinction_regression">대한민국 소멸지역 회귀 분석</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Regression · Big Data</div>
+          <p>지역 소멸 위험 요인을 회귀 모델로 분석한 빅데이터프로그래밍 프로젝트.</p>
+        </article>
+      </div>
+    </section>
 
-</main>
+    <section id="cv">
+      <div class="cat">Computer Vision / Graphics</div>
+      <div class="grid">
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/image_blending.jpg" alt="HE vs AHE vs CLAHE comparison"></div>
+          <h3><a href="https://github.com/i1uvmango/image_blending">ROI Laplacian Pyramid Blending</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>NumPy · PIL (no OpenCV)</div>
+          <p>OpenCV 없이 NumPy·PIL만으로 Laplacian Pyramid 블렌딩을 구현 — edge mask로 윤곽만 자연스럽게 합성.</p>
+        </article>
+        <article class="proj">
+          <div class="thumb"><img loading="lazy" src="assets/escape_the_cave.jpg" alt="Escape the Cave gameplay screenshot"></div>
+          <h3><a href="https://github.com/i1uvmango/escape_the_cave_computerGraphics">Escape the Cave — Voxel Game</a></h3>
+          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Three.js · Playable ↗</div>
+          <p>빛이 자원이자 위험이 되는 1인칭 절차적 복셀 동굴 탈출 게임. 브라우저에서 바로 플레이 가능.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="etc">
+      <div class="cat">Studies &amp; Etc</div>
+      <ul class="etc">
+        <li><a href="https://github.com/i1uvmango/BIUM">BIUM</a> <span>— CHIC ESG 해커톤</span></li>
+        <li><a href="https://github.com/i1uvmango/computer_graphics_threejs">computer_graphics_threejs</a> <span>— Three.js 실습</span></li>
+        <li><a href="https://github.com/i1uvmango/fastapi">fastapi</a> · <a href="https://github.com/i1uvmango/streamlit_first">streamlit_first</a> <span>— 웹 프레임워크</span></li>
+        <li><a href="https://github.com/i1uvmango/oss_docker">oss_docker</a> · <a href="https://github.com/i1uvmango/docker_practice">docker_practice</a> <span>— Docker</span></li>
+        <li><a href="https://github.com/i1uvmango/vidtotxt">vidtotxt</a> <span>— 영상→텍스트 유틸</span></li>
+        <li><a href="https://github.com/i1uvmango/study_log">study_log</a> · <a href="https://github.com/i1uvmango/jekyll_blog">jekyll_blog</a> <span>— 학습 기록</span></li>
+        <li><a href="https://github.com/i1uvmango/CHIC_26_Machine_Learning_study">CHIC ML study</a> · <a href="https://github.com/i1uvmango/CHIC_25_NodeJS_study">CHIC NodeJS study</a> <span>— 스터디</span></li>
+      </ul>
+    </section>
+  </main>
+</div>
 
 <footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;width:100%">
-    <span>© 2026 MK — Kwangwoon Univ. · diglab</span>
-    <span><a href="https://github.com/i1uvmango">github.com/i1uvmango</a></span>
+  <div class="foot-inner">
+    <span>© 2026 정만교 (MK) — Kwangwoon Univ. · Deep Imaging &amp; Graphics Lab</span>
+    <span><a href="https://github.com/i1uvmango">github.com/i1uvmango</a> · <a href="mailto:xcruisermk@gmail.com">xcruisermk@gmail.com</a></span>
   </div>
 </footer>
 

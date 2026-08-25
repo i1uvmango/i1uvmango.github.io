@@ -63,17 +63,12 @@ for c in CATS:
     for p in items:
         alt = p.get('hero_alt', '')
         thumb = media(p, 'thumb_video', 'thumb', alt)
-        stub = p.get('article') is False
-        href = p['repo'] if stub else p['_url']
+        href = p['_url']
         badge = f'<span class="badge">{p["award"]}</span>' if p.get('award') else ''
         tags = ' · '.join(p.get('tags', []))
-        if stub:
-            links = f'<a class="repo-link" href="{p["repo"]}">저장소 보기 ↗</a>'
-        else:
-            links = (f'<a class="repo-link" href="{p["_url"]}">글 읽기 →</a>'
-                     f'<a class="repo-link" href="{p["repo"]}">코드 ↗</a>')
+        links = f'<a class="repo-link" href="{p["_url"]}">글 읽기 →</a>'
         cards.append(f'''<article class="proj">
-          <div class="thumb">{thumb}</div>
+          <a class="thumb-link" href="{href}"><div class="thumb">{thumb}</div></a>
           <h3><a href="{href}">{p["title"]}</a></h3>
           <div class="read">{badge}<svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>{tags}</div>
           <p>{p.get("summary","")}</p>

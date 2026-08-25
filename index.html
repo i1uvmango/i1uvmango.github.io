@@ -42,6 +42,7 @@ layout: default
       <div class="grid">
         {%- for p in items %}
         <article class="proj">
+          <a class="thumb-link" href="{{ p.url | relative_url }}" aria-label="{{ p.title }}">
           <div class="thumb">
             {%- if p.thumb_video %}
             <video autoplay muted loop playsinline preload="metadata" poster="{{ p.thumb | relative_url }}" aria-label="{{ p.hero_alt }}">
@@ -54,25 +55,15 @@ layout: default
             <img loading="lazy" src="{{ p.thumb | relative_url }}" alt="{{ p.hero_alt }}">
             {%- endif %}
           </div>
-          <h3>
-            {%- if p.article == false -%}
-            <a href="{{ p.repo }}">{{ p.title }}</a>
-            {%- else -%}
-            <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-            {%- endif -%}
-          </h3>
+          </a>
+          <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
           <div class="read">
             {%- if p.award %}<span class="badge">{{ p.award }}</span>{% endif %}
             <svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>{{ p.tags | join: " · " }}
           </div>
           <p>{{ p.summary }}</p>
           <div class="read">
-            {%- if p.article == false %}
-            <a class="repo-link" href="{{ p.repo }}">저장소 보기 ↗</a>
-            {%- else %}
             <a class="repo-link" href="{{ p.url | relative_url }}">글 읽기 →</a>
-            <a class="repo-link" href="{{ p.repo }}">코드 ↗</a>
-            {%- endif %}
           </div>
         </article>
         {%- endfor %}

@@ -1,0 +1,45 @@
+title: "MK · i1uvmango"
+tagline: "Simulation × Deep Learning"
+description: "정만교(MK) — 광운대학교 Deep Imaging & Graphics Lab. 시뮬레이션이 만든 데이터로 모델을 학습시키고, 학습된 모델을 현실로 되돌려 놓는 일."
+url: "https://i1uvmango.github.io"
+baseurl: ""
+github_username: i1uvmango
+email: xcruisermk@gmail.com
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# 카테고리 표시 순서와 이름 (site.categories 는 Jekyll 예약어라 다른 이름을 쓴다)
+project_cats:
+  - key: robotics
+    name: "Robotics / Simulation"
+  - key: mldl
+    name: "ML / DL"
+  - key: llm
+    name: "LLM"
+  - key: ds
+    name: "Data Science"
+  - key: cv
+    name: "Computer Vision / Graphics"
+
+exclude:
+  - _preview.py
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md

@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{%- assign cat = site.project_cats | where: "key", page.category | first -%}
+<article class="article">
+
+  <div class="crumb"><a href="{{ '/' | relative_url }}">Projects</a> &nbsp;/&nbsp; {{ cat.name }}</div>
+
+  <header class="art-head">
+    <div class="art-cat">{{ cat.name }}</div>
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+    <div class="art-meta">
+      {%- if page.award %}<span class="tag hot">{{ page.award }}</span>{% endif -%}
+      {%- for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor -%}
+      {%- if page.repo %}<a href="{{ page.repo }}">GitHub ↗</a>{% endif -%}
+      {%- if page.demo %}<a href="{{ page.demo }}">Play ↗</a>{% endif -%}
+    </div>
+  </header>
+
+  {%- if page.hero_video %}
+  <div class="hero">
+    <video autoplay muted loop playsinline preload="metadata" poster="{{ page.hero | relative_url }}">
+      {%- for s in page.hero_video %}
+      <source src="{{ s.src | relative_url }}" type="{{ s.type }}">
+      {%- endfor %}
+      <img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}">
+    </video>
+  </div>
+  {%- elsif page.hero %}
+  <div class="hero"><img src="{{ page.hero | relative_url }}" alt="{{ page.hero_alt }}"></div>
+  {%- endif %}
+  {%- if page.hero_caption %}<figcaption style="max-width:760px;margin-bottom:26px">{{ page.hero_caption }}</figcaption>{% endif %}
+
+  <div class="body">
+    {{ content }}
+  </div>
+
+  <div class="art-nav">
+    <a href="{{ '/' | relative_url }}">← 프로젝트 목록</a>
+    {% if page.repo %}<a href="{{ page.repo }}">저장소에서 코드 보기 ↗</a>{% endif %}
+  </div>
+
+</article>

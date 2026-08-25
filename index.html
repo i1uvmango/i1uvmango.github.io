@@ -1,104 +1,6 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK · i1uvmango — Projects</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#111418;
-  --sub:#6B7480;
-  --line:#E5E8EC;
-  --link:#1A1A1A;
-  --accent:#2E5E8C;
-  --amber:#D98E04;
-  --bg:#FFFFFF;
-  --thumb-bg:#F3F5F8;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:"IBM Plex Sans KR",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-a{color:inherit}
-.mono{font-family:"IBM Plex Mono",monospace}
-
-/* ---------- top nav ---------- */
-nav{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
-  border-bottom:1px solid var(--line);z-index:10}
-.nav-inner{max-width:1200px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.brand{font-size:19px;font-weight:700;text-decoration:none;letter-spacing:-0.01em}
-.nav-links{display:flex;gap:26px;flex-wrap:wrap}
-.nav-links a{font-size:15px;color:var(--ink);text-decoration:none}
-.nav-links a:hover{color:var(--accent)}
-
-/* ---------- layout ---------- */
-.page{max-width:1200px;margin:0 auto;padding:48px 28px;display:grid;grid-template-columns:280px 1fr;gap:56px}
-@media(max-width:900px){.page{grid-template-columns:1fr;gap:32px}}
-
-/* sidebar */
-aside{align-self:start;position:sticky;top:92px}
-@media(max-width:900px){aside{position:static}}
-.avatar-field{margin-bottom:20px}
-.avatar-field svg{width:100%;max-width:240px;display:block}
-aside h2{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-0.01em}
-aside p{font-size:14.5px;color:var(--sub)}
-aside p b{color:var(--ink);font-weight:600}
-.side-links{margin-top:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
-.side-links a{color:var(--accent);text-decoration:none}
-.side-links a:hover{text-decoration:underline}
-
-/* ---------- main ---------- */
-main h1{font-size:34px;font-weight:700;letter-spacing:-0.02em;margin-bottom:34px}
-section{margin-bottom:52px}
-.cat{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px}
-.proj{display:flex;flex-direction:column;gap:10px}
-.thumb{aspect-ratio:16/9;background:var(--thumb-bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.thumb svg{width:100%;height:100%;display:block;object-fit:cover}
-.thumb img{width:100%;height:100%;display:block;object-fit:contain;background:var(--thumb-bg)}
-.thumb video{width:100%;height:100%;display:block;object-fit:cover;background:#0B0F14}
-.proj h3{font-size:17.5px;font-weight:600;line-height:1.4}
-.proj h3 a{color:var(--link);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
-.proj h3 a:hover{color:var(--accent)}
-.read{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--sub)}
-.read svg{width:13px;height:13px}
-.proj p{font-size:14px;color:var(--sub);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--amber);
-  border:1px solid var(--amber);border-radius:3px;padding:1px 7px;margin-right:6px}
-
-/* etc */
-.etc{list-style:none;columns:2;column-gap:40px;font-size:14.5px}
-@media(max-width:640px){.etc{columns:1}}
-.etc li{margin-bottom:9px;break-inside:avoid}
-.etc a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-.etc a:hover{color:var(--accent)}
-.etc span{color:var(--sub);font-size:13.5px}
-
-footer{border-top:1px solid var(--line);margin-top:24px}
-.foot-inner{max-width:1200px;margin:0 auto;padding:26px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  font-size:13px;color:var(--sub)}
-.foot-inner a{color:var(--accent);text-decoration:none}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-inner">
-    <a class="brand" href="#top">MK — 정만교</a>
-    <div class="nav-links">
-      <a href="#robotics">Robotics/Sim</a>
-      <a href="#mldl">ML/DL</a>
-      <a href="#llm">LLM</a>
-      <a href="#ds">Data Science</a>
-      <a href="#cv">Vision/Graphics</a>
-      <a href="https://github.com/i1uvmango">GitHub ↗</a>
-    </div>
-  </div>
-</nav>
-
+---
+layout: default
+---
 <div class="page" id="top">
 
   <!-- ============ sidebar ============ -->
@@ -131,101 +33,54 @@ footer{border-top:1px solid var(--line);margin-top:24px}
   <main>
     <h1>Projects</h1>
 
-    <section id="robotics">
-      <div class="cat">Robotics / Simulation</div>
+    <!-- PROJECTS -->
+    {%- for c in site.project_cats %}
+    {%- assign items = site.projects | where: "category", c.key | sort: "order" %}
+    {%- if items.size > 0 %}
+    <section id="{{ c.key }}">
+      <div class="cat">{{ c.name }}</div>
       <div class="grid">
+        {%- for p in items %}
         <article class="proj">
           <div class="thumb">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/genesis.jpg"
-                   aria-label="MPPI 경로 추종 롤아웃 — Genesis viewer">
-              <source src="assets/genesis.webm" type="video/webm">
-              <source src="assets/genesis.mp4" type="video/mp4">
-              <img src="assets/genesis.jpg" alt="MPPI path tracking on Real2Sim terrain">
+            {%- if p.thumb_video %}
+            <video autoplay muted loop playsinline preload="metadata" poster="{{ p.thumb | relative_url }}" aria-label="{{ p.hero_alt }}">
+              {%- for s in p.thumb_video %}
+              <source src="{{ s.src | relative_url }}" type="{{ s.type }}">
+              {%- endfor %}
+              <img src="{{ p.thumb | relative_url }}" alt="{{ p.hero_alt }}">
             </video>
+            {%- else %}
+            <img loading="lazy" src="{{ p.thumb | relative_url }}" alt="{{ p.hero_alt }}">
+            {%- endif %}
           </div>
-          <h3><a href="https://github.com/i1uvmango/Genesis_AI_Sim2real_Real2sim">Genesis Real2Sim — Physics-Grounded Driving Policy</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Flagship · Python · Genesis</div>
-          <p>Genesis 물리엔진 위에서 MPPI가 2048개 롤아웃으로 채굴한 골든 제어 라벨로 Path→(Steer, Throttle, Brake) Mapper를 학습. Real2Sim–Sim2Real 정책 전이로 확장하는 연구 프로젝트.</p>
+          <h3>
+            {%- if p.article == false -%}
+            <a href="{{ p.repo }}">{{ p.title }}</a>
+            {%- else -%}
+            <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            {%- endif -%}
+          </h3>
+          <div class="read">
+            {%- if p.award %}<span class="badge">{{ p.award }}</span>{% endif %}
+            <svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>{{ p.tags | join: " · " }}
+          </div>
+          <p>{{ p.summary }}</p>
+          <div class="read">
+            {%- if p.article == false %}
+            <a class="repo-link" href="{{ p.repo }}">저장소 보기 ↗</a>
+            {%- else %}
+            <a class="repo-link" href="{{ p.url | relative_url }}">글 읽기 →</a>
+            <a class="repo-link" href="{{ p.repo }}">코드 ↗</a>
+            {%- endif %}
+          </div>
         </article>
+        {%- endfor %}
       </div>
     </section>
-
-    <section id="mldl">
-      <div class="cat">ML / DL</div>
-      <div class="grid">
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/vit.jpg" alt="ViT vs Hybrid attention rollout on CIFAR-10"></div>
-          <h3><a href="https://github.com/i1uvmango/vit">ViT Structural Analysis on CIFAR-10</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>PyTorch · Ablation Report</div>
-          <p>Patch size·capacity·Hybrid CNN+ViT 구조 변형이 성능에 미치는 영향을 직접 실험·플롯으로 근거화한 분석 리포트.</p>
-        </article>
-        
-      </div>
-    </section>
-
-    <section id="llm">
-      <div class="cat">LLM</div>
-      <div class="grid">
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/patent_scope.jpg" alt="Patent Scope pipeline: SBERT retrieval to Qwen generation"></div>
-          <h3><a href="https://github.com/i1uvmango/patent_scope">Patent Scope — 특허 심사 보조 AI</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Qwen Fine-tuned · S-BERT Fine-tuned · Text Mining</div>
-          <p>특허 문서 텍스트마이닝으로 학습 데이터를 구축하고, S-BERT와 Qwen을 각각 파인튜닝해 선행기술 검색 → 등록/거절 판단 → 거절 사유 분류 → 설명 생성까지 전 파이프라인을 end-to-end로 직접 설계·구현.</p>
-        </article>
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/bridge_x.jpg" alt="Bridge X urgent Webex meeting flow"></div>
-          <h3><a href="https://github.com/i1uvmango/Bridge_X">Bridge X — 분쟁지역 청소년 심리상담 플랫폼</a></h3>
-          <div class="read"><span class="badge">🏆 Cisco 3rd</span><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>TypeScript · Gemini</div>
-          <p>Google Gemini 기반 AI 챗봇과 Webex 연동으로 분쟁지역 청소년을 상담사와 연결하는 플랫폼 (NestJS). Cisco 주관 프로젝트 3위 수상.</p>
-        </article>
-        <article class="proj">
-          <div class="thumb"><svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="200" fill="#EFF3F7"/>
-            <rect x="60" y="46" width="150" height="96" rx="8" fill="#111418"/>
-            <polygon points="118,76 118,112 152,94" fill="#fff"/>
-            <rect x="60" y="152" width="150" height="10" rx="5" fill="#B9C4CF"/>
-            <rect x="60" y="152" width="96" height="10" rx="5" fill="#D98E04"/>
-            <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#2E5E8C">
-              <text x="232" y="70">trust</text><text x="232" y="92">bias</text><text x="232" y="114">emotion</text>
-            </g>
-            <g stroke="#2E5E8C" stroke-width="2"><path d="M222,66l-6,0M222,88l-6,0M222,110l-6,0"/></g>
-          </svg></div>
-          <h3><a href="https://github.com/i1uvmango/HUSS-info-guard">Info-Guard — 영상 신뢰도 분석</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>NLP · FastAPI · WebSocket</div>
-          <p>YouTube 영상 신뢰도를 감정 분석·편향 감지·콘텐츠 분류로 평가하는 AI 검증 플랫폼. 실시간 분석 파이프라인 구현.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="ds">
-      <div class="cat">Data Science</div>
-      <div class="grid">
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/kr_extinction.jpg" alt="소멸위험지수 지역 분류 지도"></div>
-          <h3><a href="https://github.com/i1uvmango/kr_extinction_regression">대한민국 소멸지역 회귀 분석</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Regression · Big Data</div>
-          <p>지역 소멸 위험 요인을 회귀 모델로 분석한 빅데이터프로그래밍 프로젝트.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="cv">
-      <div class="cat">Computer Vision / Graphics</div>
-      <div class="grid">
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/image_blending.jpg" alt="HE vs AHE vs CLAHE comparison"></div>
-          <h3><a href="https://github.com/i1uvmango/image_blending">ROI Laplacian Pyramid Blending</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>NumPy · PIL (no OpenCV)</div>
-          <p>OpenCV 없이 NumPy·PIL만으로 Laplacian Pyramid 블렌딩을 구현 — edge mask로 윤곽만 자연스럽게 합성.</p>
-        </article>
-        <article class="proj">
-          <div class="thumb"><img loading="lazy" src="assets/escape_the_cave.jpg" alt="Escape the Cave gameplay screenshot"></div>
-          <h3><a href="https://github.com/i1uvmango/escape_the_cave_computerGraphics">Escape the Cave — Voxel Game</a></h3>
-          <div class="read"><svg viewBox="0 0 16 16" fill="none" stroke="#6B7480" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Three.js · Playable ↗</div>
-          <p>빛이 자원이자 위험이 되는 1인칭 절차적 복셀 동굴 탈출 게임. 브라우저에서 바로 플레이 가능.</p>
-        </article>
-      </div>
-    </section>
+    {%- endif %}
+    {%- endfor %}
+    <!-- /PROJECTS -->
 
     <section id="etc">
       <div class="cat">Studies &amp; Etc</div>
@@ -241,13 +96,3 @@ footer{border-top:1px solid var(--line);margin-top:24px}
     </section>
   </main>
 </div>
-
-<footer>
-  <div class="foot-inner">
-    <span>© 2026 정만교 (MK) — Kwangwoon Univ. · Deep Imaging &amp; Graphics Lab</span>
-    <span><a href="https://github.com/i1uvmango">github.com/i1uvmango</a> · <a href="mailto:xcruisermk@gmail.com">xcruisermk@gmail.com</a></span>
-  </div>
-</footer>
-
-</body>
-</html>

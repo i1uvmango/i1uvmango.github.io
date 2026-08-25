@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="영상 신뢰도 분석 개념도">
+  <rect width="320" height="180" fill="#EFF3F7"/>
+  <rect x="42" y="38" width="140" height="80" rx="8" fill="#111418"/>
+  <polygon points="96,62 96,94 126,78" fill="#fff"/>
+  <rect x="42" y="128" width="140" height="9" rx="4.5" fill="#B9C4CF"/>
+  <rect x="42" y="128" width="90" height="9" rx="4.5" fill="#D98E04"/>
+  <g stroke="#2E5E8C" stroke-width="2" fill="none"><path d="M196,58h-8M196,80h-8M196,102h-8"/></g>
+  <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#2E5E8C">
+    <text x="204" y="62">trust</text><text x="204" y="84">bias</text><text x="204" y="106">emotion</text>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if page.url == "/" %}{{ site.title }} — Projects{% else %}{{ page.title }} · MK{% endif %}</title>
+<meta name="description" content="{% if page.lede %}{{ page.lede | strip_html | truncate: 180 }}{% else %}{{ site.description }}{% endif %}">
+<meta property="og:title" content="{% if page.url == '/' %}{{ site.title }}{% else %}{{ page.title }}{% endif %}">
+<meta property="og:description" content="{% if page.lede %}{{ page.lede | strip_html | truncate: 180 }}{% else %}{{ site.description }}{% endif %}">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">MK — 정만교</a>
+    <div class="nav-links">
+      {%- for c in site.project_cats %}
+      <a href="{{ '/' | relative_url }}#{{ c.key }}">{{ c.name }}</a>
+      {%- endfor %}
+      <a href="https://github.com/{{ site.github_username }}">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+{{ content }}
+
+<footer>
+  <div class="foot-inner">
+    <span>© 2026 정만교 (MK) — Kwangwoon Univ. · Deep Imaging &amp; Graphics Lab</span>
+    <span><a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a> · <a href="mailto:{{ site.email }}">{{ site.email }}</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

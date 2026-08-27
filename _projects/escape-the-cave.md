@@ -2,7 +2,7 @@
 title: "GPU 없는 브라우저에서 실시간 GI 돌리기"
 lede: "WebGL2에는 compute 셰이더가 없다. CPU로 프로브를 추적하면 20fps로 무너진다. 예산을 어디서 훔쳐 왔는지에 대한 기록."
 category: cv
-order: 2
+order: 3
 tags: ["Three.js", "WebGL2", "DDGI", "최적화"]
 repo: "https://github.com/i1uvmango/escape_the_cave_computerGraphics"
 demo: "https://i1uvmango.github.io/escape_the_cave_computerGraphics/"

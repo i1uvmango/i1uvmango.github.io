@@ -1,7 +1,7 @@
 ---
 title: "Patent Scope — 변리사 없이 특허 통과 여부 미리 보기"
 lede: "\"이 아이디어, 이미 있나요? 없으면 등록될까요?\" 이 두 질문에 답하려면 지금은 변리사를 만나야 한다. S-BERT RAG로 선행기술을 찾고 Qwen 파인튜닝으로 판정하는 파이프라인을 만들었다."
-category: llm
+category: ai
 order: 1
 tags: ["S-BERT RAG", "Qwen LoRA", "Text Mining"]
 repo: "https://github.com/i1uvmango/patent_scope"

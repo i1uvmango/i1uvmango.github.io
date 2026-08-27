@@ -1,7 +1,7 @@
 ---
 title: "ViT는 왜 CIFAR-10에서 CNN에게 지는가"
 lede: "구조 문제인가, 데이터 문제인가. patch·capacity·head·conv stem·augmentation·distillation까지 8개 가설을 전부 실험으로 갈랐다. 결론은 셋이 반증됐다."
-category: mldl
+category: cv
 order: 1
 tags: ["PyTorch", "Ablation Report", "CIFAR-10"]
 repo: "https://github.com/i1uvmango/vit"

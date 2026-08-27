@@ -2,7 +2,7 @@
 title: "Laplacian Blending에 준 세 개의 Twist"
 lede: "교과서 구현은 두 이미지 전체를 반반 섞는다. 여기선 ROI만, 마스크를 그리지 않고, 색을 잃지 않고 섞어야 했다. 그 세 지점에서 무엇을 바꿨는가."
 category: cv
-order: 1
+order: 2
 tags: ["NumPy", "PIL", "no OpenCV"]
 repo: "https://github.com/i1uvmango/image_blending"
 thumb: /assets/image_blending.jpg

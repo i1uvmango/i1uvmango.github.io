@@ -1,7 +1,7 @@
 ---
 title: "Info-Guard — 영상의 신뢰도를 점수로 만든다면"
 lede: "차단이 아니라 라벨링. 유튜브 영상의 음성·자막·메타데이터를 감정·편향·팩트로 쪼개 0~100 점수로 합치는 설계와, 파이프라인 각 단계를 따로 검증한 기록."
-category: llm
+category: ai
 order: 3
 tags: ["Whisper", "BERT", "zero-shot", "설계 기록"]
 repo: "https://github.com/i1uvmango/HUSS-info-guard"

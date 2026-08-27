@@ -28,14 +28,12 @@ defaults:
 project_cats:
   - key: robotics
     name: "Robotics / Simulation"
-  - key: mldl
-    name: "ML / DL"
-  - key: llm
-    name: "LLM"
-  - key: ds
-    name: "Data Science"
+  - key: ai
+    name: "ML / DL / LLM"
   - key: cv
     name: "Computer Vision / Graphics"
+  - key: ds
+    name: "Data Science"
 
 exclude:
   - _preview.py

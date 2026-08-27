@@ -1,7 +1,7 @@
 ---
 title: "Bridge X — AI가 위기를 감지하면 사람을 부른다"
 lede: "챗봇이 상담을 대신하지 않는다. 자해·자살 신호를 잡는 순간 Webex 미팅을 자동으로 열고 사람에게 넘긴다. 그 골든타임을 코드로 어떻게 구현했는가."
-category: llm
+category: ai
 order: 2
 award: "🏆 Cisco 3rd"
 tags: ["NestJS", "Next.js", "Gemini", "Webex API"]

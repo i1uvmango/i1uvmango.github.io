@@ -91,9 +91,45 @@ Stanley가 목표 `(a, ω)`를 내면 Sweep Table이 그걸 `(T, S)`로 바꾼�
   <figcaption>시나리오 p120. HUD에 <code>ctrl STN</code>(Stanley), 도달 오차 <code>arr 0.01 m</code>가 찍힌다. 회색이 GT 경로, 파랑이 수정된 참조 경로, 빨강이 차량 궤적. 빨간 박스는 정적 장애물, 주황 박스는 이동 장애물이다.</figcaption>
 </figure>
 
-## Off-nominal — 복구는 제어가 아니라 계획 문제다
+## Off-nominal ① — 처음 시도: RL 기반 복구 (Switch Policy)
 
-경로에서 크게 벗어났을 때 피드백 게인을 키우는 건 답이 아니다. 지금 자세와 속도에서 **물리적으로 갈 수 있는 경로를 새로 만들어야** 한다.
+처음 접근은 **정책을 갈아 끼우는** 것이었다. 정상 주행은 Nominal Controller + residual RL이 맡고, disturbance로 경로를 이탈하면 **RL_recovery로 model switch**, 정상 범위로 복귀하면 다시 nominal로 돌아온다.
+
+이 복구 정책이 보는 관측을 7개로 설계했다. 좌표계에 의존하는 절대값 대신 **경로와 차량의 상대 관계**로 구성한 게 요점이다.
+
+<figure>
+  <img loading="lazy" src="{{ '/assets/genesis/obs-features.png' | relative_url }}" alt="차량과 목표점 사이의 7가지 관측 피처를 표시한 그림">
+  <figcaption>RL_recovery의 관측 — ① 거리 d ② bearing ③ align ④ approach speed ⑤ velocity ⑥ yaw rate ⑦ steering.</figcaption>
+</figure>
+
+<div class="tw" markdown="1">
+
+| # | 피처 | 의미 |
+|---|---|---|
+| ① | `d` | 목표점까지의 거리 |
+| ② | bearing | 차량 기준 목표점 방위 |
+| ③ | align | 목표점에서의 경로 방향과 접근 방향의 정렬 |
+| ④ | approach speed | 목표점을 향해 줄어드는 속도 성분 |
+| ⑤ | velocity | 차량 속도 벡터 |
+| ⑥ | yaw rate | 요 각속도 — 오버/언더스티어 감지 |
+| ⑦ | steering | 현재 조향 입력 |
+
+</div>
+
+②와 ③을 분리한 게 의도적이다. bearing만 있으면 "목표점이 어느 쪽인가"는 알지만 **도착했을 때 어느 방향을 보고 있어야 하는가**를 모른다. align이 그 자세 조건을 담는다. ⑥ yaw rate는 복구 상황에서 특히 중요하다 — 차체가 이미 돌기 시작했는지를 알려주는 신호이기 때문이다.
+
+이 방식은 **경로를 새로 만들지 않고 주행 policy만으로** 복구한다. 실제로 대부분의 시나리오에서 돌아왔다.
+
+<figure>
+  <img loading="lazy" src="{{ '/assets/genesis/recovery-grid.png' | relative_url }}" alt="RL 기반 복구 시나리오 궤적 결과 그리드, 대부분 초록 테두리이고 하나가 빨강">
+  <figcaption>RL 기반 복구의 시나리오별 결과. 초록이 성공, 빨강이 실패. 직선·급커브·원형 순환로·8자·직각 코너까지 대부분 통과했지만 <b>실패가 남는다.</b></figcaption>
+</figure>
+
+그런데 남은 빨간 칸이 문제였다. **왜 실패했는지 정책 안을 들여다볼 방법이 없다.** 고치려면 보상을 다시 설계하고 재학습을 돌린 뒤, 다른 시나리오가 망가지지 않았는지 전부 다시 확인해야 한다. 복구 정책은 blackbox였다.
+
+## Off-nominal ② — 현재: 복구는 제어가 아니라 계획 문제다
+
+그래서 정책을 바꾸는 대신 **경로를 만들기로** 했다. 경로에서 크게 벗어났을 때 필요한 건 더 센 피드백이 아니라, 지금 자세와 속도에서 **물리적으로 갈 수 있는 새 경로**다. 그 경로만 있으면 주행은 이미 검증된 nominal 스택이 그대로 한다.
 
 <figure>
   <img loading="lazy" src="{{ '/assets/genesis/recovery-modes.gif' | relative_url }}" alt="spawn pose, lateral kick, spin 세 가지 외란 상황에서의 복구 주행">
@@ -129,46 +165,27 @@ feasibility 검사가 **후보 생성 앞뒤로 두 번** 들어간 게 이 구�
 
 선택된 궤적은 **Recovery Reference**가 되고 **MERGE**에서 원래 GT 경로로 합류한다. 복구가 끝나면 다시 nominal 축으로 돌아가는 것이다.
 
-## 복구를 시나리오 그리드로 재봤다
+## RL 기반에서 Path Planner 기반으로 — 무엇이 달라졌나
 
-<figure>
-  <img loading="lazy" src="{{ '/assets/genesis/recovery-grid.png' | relative_url }}" alt="복구 시나리오 궤적 결과 그리드, 대부분 초록 테두리이고 하나가 빨강">
-  <figcaption>초록 테두리가 복구 성공, 빨강이 실패. 직선·완만한 곡선·급커브·원형 순환로·8자·직각 코너까지 경로 형상을 바꿔가며 이탈 지점과 복구 궤적을 기록했다.</figcaption>
-</figure>
-
-경로 형상을 바꿔가며 복구를 시켰고 **대부분 통과, 실패가 한 칸** 남았다. 이 한 칸이 다음에 볼 케이스다.
-
-학습 기반 복구와 플래너 기반 복구를 같은 조건에서 나란히 돌린 비교도 있다.
+같은 이탈 상황에서 두 방식을 나란히 돌렸다.
 
 <figure>
   <img loading="lazy" src="{{ '/assets/genesis/plan-p120-compare.gif' | relative_url }}" alt="learning-based recovery와 recovery path planner의 나란한 비교">
   <figcaption>왼쪽 learning-based recovery, 오른쪽 recovery path planner. 같은 이탈 상황에서 두 방식이 그리는 복구 궤적을 비교한다.</figcaption>
 </figure>
 
-## 관측을 무엇으로 줄 것인가
-
-RL 축에서 정책이 보는 값을 7개로 정리했다. 좌표계에 의존하는 절대값 대신 **경로와 차량의 상대 관계**로 구성한 게 요점이다.
-
-<figure>
-  <img loading="lazy" src="{{ '/assets/genesis/obs-features.png' | relative_url }}" alt="차량과 목표점 사이의 7가지 관측 피처를 표시한 그림">
-  <figcaption>① 거리 d ② bearing ③ align ④ approach speed ⑤ velocity ⑥ yaw rate ⑦ steering.</figcaption>
-</figure>
-
 <div class="tw" markdown="1">
 
-| # | 피처 | 의미 |
+| | RL 기반 복구 | **Recovery Path Planner 기반** |
 |---|---|---|
-| ① | `d` | 목표점까지의 거리 |
-| ② | bearing | 차량 기준 목표점 방위 |
-| ③ | align | 목표점에서의 경로 방향과 접근 방향의 정렬 |
-| ④ | approach speed | 목표점을 향해 줄어드는 속도 성분 |
-| ⑤ | velocity | 차량 속도 벡터 |
-| ⑥ | yaw rate | 요 각속도 — 오버/언더스티어 감지 |
-| ⑦ | steering | 현재 조향 입력 |
+| 복구 방식 | 정책의 경험적 선택 | 물리적 feasibility 제약으로 생성 |
+| 설명 가능성 | blackbox | 후보·feasibility·cost **역추적 가능** |
+| 기존 스택 | Recovery 전용 RL 학습 필요 | **nominal 스택 그대로 사용** |
+| 실패 대응 | 보상 재설계 + 재학습 | **rule 수정만으로 해결** |
 
 </div>
 
-②와 ③을 분리한 게 의도적이다. bearing만 있으면 "목표점이 어느 쪽인가"는 알지만 **도착했을 때 어느 방향을 보고 있어야 하는가**를 모른다. align이 그 자세 조건을 담는다. ⑥ yaw rate는 복구 상황에서 특히 중요하다 — 차체가 이미 돌기 시작했는지를 알려주는 신호이기 때문이다.
+RL 기반에서 실패로 남았던 scene도 플래너 기반에서는 **어느 제약이 잘못 걸렸는지 역추적해서 그 규칙만 고치는** 것으로 해결됐다. 재학습이 없었다.
 
 ## 스케일 — 지형과 병렬 환경
 

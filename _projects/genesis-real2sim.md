@@ -97,11 +97,6 @@ Stanley가 목표 `(a, ω)`를 내면 Sweep Table이 그걸 `(T, S)`로 바꾼�
 
 이 복구 정책이 보는 관측을 7개로 설계했다. 좌표계에 의존하는 절대값 대신 **경로와 차량의 상대 관계**로 구성한 게 요점이다.
 
-<figure>
-  <img loading="lazy" src="{{ '/assets/genesis/obs-features.png' | relative_url }}" alt="차량과 목표점 사이의 7가지 관측 피처를 표시한 그림">
-  <figcaption>RL_recovery의 관측 — ① 거리 d ② bearing ③ align ④ approach speed ⑤ velocity ⑥ yaw rate ⑦ steering.</figcaption>
-</figure>
-
 <div class="tw" markdown="1">
 
 | # | 피처 | 의미 |

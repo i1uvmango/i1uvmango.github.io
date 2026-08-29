@@ -84,7 +84,7 @@ head 수는 어떨까. embed를 고정하면 head 수는 param-neutral이라 구
 
 세 run의 파라미터 수가 **정확히 같고**, gap도 소수점 세 자리까지 같다. acc spread는 0.56%p — 노이즈 수준이다. head_dim을 16까지 줄여도 저하가 없었고, heads=16은 정확도 이득 없이 **시간만 +63%**였다.
 
-## Twist ① — conv stem을 이식하면 될까 (반증)
+## Twist 1 — conv stem을 이식하면 될까 (반증)
 
 CNN 우위가 tokenization 때문이라면, patch embedding을 경량 conv stem으로 갈아끼우면 격차가 줄어야 한다. conv stem은 일부러 **36K params**로 얇게 설계했다 — 전체가 3.22M(ViT 대비 +0.74%)이 되어야 "차이 = 파라미터 증가"가 아니라 **"차이 = locality"**로 귀속이 깨끗해진다.
 
@@ -112,9 +112,9 @@ crop + flip만 켰다. 2×2 ablation이다.
 
 CNN(0.8365)과의 격차가 **14.1%p → 4.4%p**로 줄었다. 단일 레버로는 patch4→patch2(+4.3%p)의 두 배 이상이다.
 
-그리고 여기서 Twist ①이 한 번 더 반증된다. conv stem이 만든 Δ는 no-aug에서 **−0.0242**, aug에서 **−0.0247**. 거의 완전히 같다. **Hybrid의 열세는 과적합의 부산물이 아니라 구조적 성질**이라는 뜻이다.
+그리고 여기서 Twist 1이 한 번 더 반증된다. conv stem이 만든 Δ는 no-aug에서 **−0.0242**, aug에서 **−0.0247**. 거의 완전히 같다. **Hybrid의 열세는 과적합의 부산물이 아니라 구조적 성질**이라는 뜻이다.
 
-## Twist ② — knowledge distillation (두 번 반증)
+## Twist 2 — knowledge distillation (두 번 반증)
 
 DeiT hard distillation을 붙였다. CNN teacher는 gap 0.159로 ViT보다 일반화가 좋으니 이상적인 convnet teacher다. `L = 0.5·CE(CLS, y_true) + 0.5·CE(distill, argmax teacher)`.
 

@@ -27,7 +27,7 @@ roi_eye_blend(hand_path, eye_path,
 
 ---
 
-## Twist ① — 전체가 아니라 ROI만 피라미드에 올린다
+## Twist 1 — 전체가 아니라 ROI만 피라미드에 올린다
 
 **교과서:** 두 이미지 전체로 피라미드를 쌓는다.
 
@@ -42,12 +42,12 @@ roi_eye_blend(hand_path, eye_path,
 eye 이미지는 ROI 크기에 **비율을 무시하고 강제로 리사이즈**한다. hand는 EXIF orientation을 제거하고 640×480으로 **비율을 유지**해 리사이즈했는데, 여기선 반대다. 배경은 원본을 보존하고 삽입물은 자리에 맞춘다 — 의도적인 비대칭이다.
 
 <div class="callout" markdown="1">
-<b>이 twist의 대가.</b> ROI <b>내부</b>는 완벽하게 섞이지만, 블렌딩된 조각을 원본에 다시 붙이는 순간 <b>ROI 바깥 경계</b>가 새로 생긴다. 피라미드가 풀어주지 않는 문제다 — 아래 Twist ③ 다음에 다시 나온다.
+<b>이 twist의 대가.</b> ROI <b>내부</b>는 완벽하게 섞이지만, 블렌딩된 조각을 원본에 다시 붙이는 순간 <b>ROI 바깥 경계</b>가 새로 생긴다. 피라미드가 풀어주지 않는 문제다 — 아래 Twist 3 다음에 다시 나온다.
 </div>
 
 ---
 
-## Twist ② — 마스크를 그리지 않고, 이미지가 스스로 만들게 한다
+## Twist 2 — 마스크를 그리지 않고, 이미지가 스스로 만들게 한다
 
 **교과서:** 사람이 마스크를 정의한다. 좌우 이진 마스크든 손으로 그린 알파 맵이든.
 
@@ -85,7 +85,7 @@ blended = eye · mask + hand · (1 − mask)
 
 | 실행 | 마스크 | 성격 |
 |---|---|---|
-| `test2/` | **Laplacian edge mask** (Twist ②) | 이미지가 스스로 만든 마스크 |
+| `test2/` | **Laplacian edge mask** (Twist 2) | 이미지가 스스로 만든 마스크 |
 | `test3/` | **Ellipse mask** (`create_ellipse_mask`) | 사람이 형태를 지정한 기하학적 마스크 |
 
 </div>
@@ -94,7 +94,7 @@ blended = eye · mask + hand · (1 − mask)
 
 ---
 
-## Twist ③ — RGB를 버리고 YUV로, 그리고 음수를 지킨다
+## Twist 3 — RGB를 버리고 YUV로, 그리고 음수를 지킨다
 
 **교과서:** 대개 그레이스케일이거나, RGB 3채널을 똑같이 처리한다고 넘어간다.
 
@@ -118,9 +118,9 @@ Y는 0–255지만 U, V는 **0을 중심으로 음수와 양수를 오간다.** 
 
 ---
 
-## Twist ①의 청구서 — 끝내 남은 바깥 경계
+## Twist 1의 청구서 — 끝내 남은 바깥 경계
 
-세 twist로 ROI 내부는 깨끗해졌다. 그런데 Twist ①에서 예고한 문제가 마지막에 돌아왔다. 블렌딩된 ROI 조각을 원본 hand에 삽입하는 순간 **ROI와 hand 사이의 경계선**이 눈에 보인다.
+세 twist로 ROI 내부는 깨끗해졌다. 그런데 Twist 1에서 예고한 문제가 마지막에 돌아왔다. 블렌딩된 ROI 조각을 원본 hand에 삽입하는 순간 **ROI와 hand 사이의 경계선**이 눈에 보인다.
 
 두 가지 해법을 만들어 비교했다.
 
@@ -138,7 +138,7 @@ Y는 0–255지만 U, V는 **0을 중심으로 음수와 양수를 오간다.** 
   <figcaption>왼쪽부터 경계 처리 없음 / Gaussian Blur / Feathering.</figcaption>
 </figure>
 
-승자를 정하지 않고 둘 다 출력한다. 선명도와 경계 자연스러움 사이의 트레이드오프이고, 이미지에 따라 답이 달라진다. **Twist ①(국소 합성)을 택한 대가로 남은 미해결 문제**다.
+승자를 정하지 않고 둘 다 출력한다. 선명도와 경계 자연스러움 사이의 트레이드오프이고, 이미지에 따라 답이 달라진다. **Twist 1(국소 합성)을 택한 대가로 남은 미해결 문제**다.
 
 ---
 
@@ -148,12 +148,12 @@ Y는 0–255지만 U, V는 **0을 중심으로 음수와 양수를 오간다.** 
 
 | 단계 | 하는 일 | 관련 twist |
 |---|---|---|
-| 1 | ROI crop (padding 없음), eye 강제 리사이즈, RGB→YUV | ①③ |
-| 2 | Gaussian Pyramid — Y, U, V 전 채널, `levels=5` | ③ |
+| 1 | ROI crop (padding 없음), eye 강제 리사이즈, RGB→YUV | 1·3 |
+| 2 | Gaussian Pyramid — Y, U, V 전 채널, `levels=5` | 3 |
 | 3 | Laplacian Pyramid = 현재 레벨 − 업샘플된 다음 레벨 | — |
-| 4 | eye Laplacian 절댓값 → edge mask → blur → Mask Pyramid | ② |
-| 5 | 레벨별 `eye·mask + hand·(1−mask)` | ② |
-| 6 | Collapse → YUV→RGB → 원본에 삽입 → 경계 처리 2안 | ① |
+| 4 | eye Laplacian 절댓값 → edge mask → blur → Mask Pyramid | 2 |
+| 5 | 레벨별 `eye·mask + hand·(1−mask)` | 2 |
+| 6 | Collapse → YUV→RGB → 원본에 삽입 → 경계 처리 2안 | 1 |
 
 </div>
 
